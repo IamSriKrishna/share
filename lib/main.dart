@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
-void main() {
+Future<void> main() async{
   UserRepository _repository = UserRepository();
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
@@ -22,9 +22,15 @@ void main() {
   ], child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

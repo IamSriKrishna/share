@@ -204,6 +204,7 @@ class HomeWidget {
           );
         }
         if (userState is UserErrorState) {
+          print(userState.error);
           return SliverToBoxAdapter(
             child: Center(child: Text(userState.error)),
           );

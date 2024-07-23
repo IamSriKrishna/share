@@ -1,22 +1,10 @@
 class UserModel {
-  final String status;
-  final int length;
   List<Data> data;
-  UserModel({this.status = "no-status", this.data = const [], this.length = 0});
+  UserModel({this.data = const []});
 
-  Map<String, dynamic> toJson() {
-    return {
-      'status': status,
-      'length': length,
-      'data': data.map((dataItem) => dataItem.toJson()).toList(),
-    };
-  }
-
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
-        status: json['status'],
-        length: json['length'],
-        data: List<Data>.from(json['data'].map((e) => Data.fromJson(e))));
+  factory UserModel.fromJson(List<dynamic> json) {
+    return UserModel(data: json.map((e) => Data.fromJson(e)).toList());
+    //data: List<Data>.from(json['data'].map((e) => Data.fromJson(e))));
   }
 }
 
@@ -33,17 +21,9 @@ class Data {
 
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
-        id: json["_id"],
+        id: json["id"],
         name: json['name'],
         email: json['email'],
         age: json['age']);
-  }
-   Map<String, dynamic> toJson() {
-    return {
-      "_id": id,
-      'name': name,
-      'email': email,
-      'age': age,
-    };
   }
 }
